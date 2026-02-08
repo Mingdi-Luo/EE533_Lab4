@@ -1,0 +1,185 @@
+#!/usr/bin/perl -w
+use lib "/usr/local/netfpga/lib/Perl5";
+use strict;
+
+# Software (SW) registers
+my $IDS_LA_IN_READPTR_REG   = 0x2000300;  # la_in_read_ptr
+my $IDS_LA_OUT_READPTR_REG  = 0x2000304;  # la_out_read_ptr
+my $IDS_COMMAND_REG         = 0x2000308;  # ids_cmd
+my $IDS_PATTERN_LO_REG      = 0x200030C;  # pattern_low
+my $IDS_PATTERN_HI_REG      = 0x2000310;  # pattern_high
+
+# Hardware (HW) registers (read-only by software):
+my $IDS_IN_WORD_OUT_0       = 0x2000314;  # la_in_word_out_0
+my $IDS_IN_WORD_OUT_1       = 0x2000318;  # la_in_word_out_1
+my $IDS_IN_WORD_OUT_2       = 0x200031C;  # la_in_word_out_2
+
+#   Out-FIFO capture output (72 bits => 3x 32-bit regs)
+my $IDS_OUT_WORD_OUT_0      = 0x2000320;  # la_out_word_out_0
+my $IDS_OUT_WORD_OUT_1      = 0x2000324;  # la_out_word_out_1
+my $IDS_OUT_WORD_OUT_2      = 0x2000328;  # la_out_word_out_2
+
+#   Matches register
+my $IDS_MATCHES_REG         = 0x200032C;  # matches (if retained)
+
+
+sub regwrite {
+   my ($addr, $value) = @_;
+   my $cmd = sprintf("regwrite %s 0x%08x", $addr, $value);
+   my $result = `$cmd`;
+   # print "Ran command '$cmd' and got result '$result'\n";
+}
+
+sub regread {
+   my ($addr) = @_;
+   my $cmd = sprintf("regread %s", $addr);
+   my @out = `$cmd`;
+   my $result = $out[0];
+   if ($result =~ m/Reg (0x[0-9a-f]+) \((\d+)\):\s+(0x[0-9a-f]+) \((\d+)\)/i) {
+      $result = $3;  # e.g. "0x0000003c"
+   }
+   return $result;
+}
+
+sub idsreset {
+   regwrite($IDS_COMMAND_REG, 0x1);
+   regwrite($IDS_COMMAND_REG, 0x0);
+}
+
+sub write_pattern {
+   my ($hi, $lo) = @_;
+   regwrite($IDS_PATTERN_HI_REG, $hi);
+   regwrite($IDS_PATTERN_LO_REG, $lo);
+}
+
+sub pattern_from_ascii {
+   my( $patstr ) = @_;
+   my @chars = split(//, $patstr);
+   my @ints = map {  ord( $_ ) } @chars;
+   my $validBytes = $#ints + 1;
+   my $hi = 0;
+   my $lo = 0;
+   for (my $i = 0; $i <= 6; $i++) {
+      if ($i < $validBytes) {
+         my $bit = 1 << (6 - $i);
+         # print "Setting mask bit $bit for byte $i\n";
+         $hi |= ($bit << 24);
+         if ($i <= 2) {
+            $hi |= ($ints[$i] << (8 * (2 - $i)));
+         } else {
+            my $pos = $i - 3;
+            $lo |= ($ints[$i] << (8 * (3 - $pos)));
+         }
+      }
+   }
+   return ($hi, $lo);
+}
+
+sub la_in_set_readptr {
+   my ($index) = @_;
+   regwrite($IDS_LA_IN_READPTR_REG, $index);
+}
+sub la_in_read_entry {
+   my ($index) = @_;
+   la_in_set_readptr($index);
+
+   my $w0_hex = regread($IDS_IN_WORD_OUT_0);  # bits [31:0]
+   my $w1_hex = regread($IDS_IN_WORD_OUT_1);  # bits [63:32]
+   my $w2_hex = regread($IDS_IN_WORD_OUT_2);  # bits [71:64] in lower 8 bits
+
+   return ($w2_hex, $w1_hex, $w0_hex);
+}
+
+sub la_out_set_readptr {
+   my ($index) = @_;
+   regwrite($IDS_LA_OUT_READPTR_REG, $index);
+}
+
+sub la_out_read_entry {
+   my ($index) = @_;
+
+   la_out_set_readptr($index);
+
+   my $w0_hex = regread($IDS_OUT_WORD_OUT_0);
+   my $w1_hex = regread($IDS_OUT_WORD_OUT_1);
+   my $w2_hex = regread($IDS_OUT_WORD_OUT_2);
+
+   return ($w2_hex, $w1_hex, $w0_hex);
+}
+
+sub usage {
+   print "Usage: idsreg <cmd> <cmd options>\n";
+   print "  Commands:\n";
+   print "    reset                resets the matches counter\n";
+   print "    pattern <string>     set a pattern from ASCII\n";
+   print "    matches              displays the matches register\n";
+   print "    allregs              Display all registers\n";
+   print "    ladump_in            Dump captured In-FIFO data Usage <start_idx end_idx>\n";
+   print "    ladump_out           Dump captured Out-FIFO data Usage <start_idx end_idx>\n";
+}
+
+my $numargs = scalar(@ARGV);
+if ($numargs < 1) {
+   usage();
+   exit(1);
+}
+
+my $cmd = $ARGV[0];
+if ($cmd eq "reset") {
+   idsreset();
+} elsif ($cmd eq "pattern") {
+   if ($numargs < 2) {
+      usage();
+      exit(1);
+   }
+   my $str = $ARGV[1];
+   my ($hi, $lo) = pattern_from_ascii($str);
+   printf("Setting pattern: hi=0x%08x, lo=0x%08x\n", $hi, $lo);
+   write_pattern($hi, $lo);
+} elsif ($cmd eq "matches") {
+   my $val = regread($IDS_MATCHES_REG);
+   print "MATCHES = $val\n";
+} elsif ($cmd eq "allregs") {
+   print "IN_READ_PTR:    ", regread($IDS_LA_IN_READPTR_REG),   "\n";
+   print "OUT_READ_PTR:   ", regread($IDS_LA_OUT_READPTR_REG),  "\n";
+   print "CMD_REG:        ", regread($IDS_COMMAND_REG),         "\n";
+   print "PATTERN_LO:     ", regread($IDS_PATTERN_LO_REG),      "\n";
+   print "PATTERN_HI:     ", regread($IDS_PATTERN_HI_REG),      "\n";
+   print "IN_WORD_0:      ", regread($IDS_IN_WORD_OUT_0),       "\n";
+   print "IN_WORD_1:      ", regread($IDS_IN_WORD_OUT_1),       "\n";
+   print "IN_WORD_2:      ", regread($IDS_IN_WORD_OUT_2),       "\n";
+   print "OUT_WORD_0:     ", regread($IDS_OUT_WORD_OUT_0),      "\n";
+   print "OUT_WORD_1:     ", regread($IDS_OUT_WORD_OUT_1),      "\n";
+   print "OUT_WORD_2:     ", regread($IDS_OUT_WORD_OUT_2),      "\n";
+   print "MATCHES:        ", regread($IDS_MATCHES_REG),         "\n";
+} elsif ($cmd eq "ladump_in") {
+   if ($numargs < 3) {
+      usage();
+      exit(1);
+   }
+   my $start_idx = $ARGV[1];
+   my $end_idx   = $ARGV[2];
+
+   for (my $i = $start_idx; $i <= $end_idx; $i++) {
+      my ($w2_hex, $w1_hex, $w0_hex) = la_in_read_entry($i);
+      printf("IN[%3d]: 0x%02x_%08x_%08x\n",
+             $i, hex($w2_hex), hex($w1_hex), hex($w0_hex));
+   }
+} elsif ($cmd eq "ladump_out") {
+   if ($numargs < 3) {
+      usage();
+      exit(1);
+   }
+   my $start_idx = $ARGV[1];
+   my $end_idx   = $ARGV[2];
+
+   for (my $i = $start_idx; $i <= $end_idx; $i++) {
+      my ($w2_hex, $w1_hex, $w0_hex) = la_out_read_entry($i);
+      printf("OUT[%3d]: 0x%02x_%08x_%08x\n",
+             $i, hex($w2_hex), hex($w1_hex), hex($w0_hex));
+   }
+} else {
+   print "Unrecognized command '$cmd'\n";
+   usage();
+   exit(1);
+}

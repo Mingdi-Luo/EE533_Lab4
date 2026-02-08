@@ -1,0 +1,15 @@
+--- Step 6 UDP NIC Stress Test (Sat Feb  7 06:36:40 PM PST 2026) ---
+Round SRC  DST  Transfer   Bandwidth    Jitter     Loss         Loss%%  
+----------------------------------------------------------------------------
+1     n0   n1   71.2 MBytes 19.7 Mbits/sec 2.774 ms   1655085/1800842 (92%)   
+1     n1   n0   78.9 MBytes 21.9 Mbits/sec 4.845 ms   936385/1097897 (85%)   
+1     n2   n3   22.9 MBytes 6.36 Mbits/sec 5.736 ms   1757359/1804332 (97%)   
+1     n3   n2   76.7 MBytes 21.1 Mbits/sec 14.000 ms  1655773/1812916 (91%)   
+2     n0   n2   77.9 MBytes 21.6 Mbits/sec 3.568 ms   1654766/1814295 (91%)   
+2     n2   n0   72.4 MBytes 20.1 Mbits/sec 0.665 ms   1675540/1823876 (92%)   
+2     n1   n3   64.6 MBytes 17.5 Mbits/sec 51.994 ms  1240654/1372966 (90%)   
+2     n3   n1   75.7 MBytes 21.0 Mbits/sec 0.078 ms   1654771/1809818 (91%)   
+3     n0   n3   65.0 MBytes 18.0 Mbits/sec 11.102 ms  1685876/1818991 (93%)   
+3     n3   n0   75.9 MBytes 21.1 Mbits/sec 0.657 ms   1652346/1807823 (91%)   
+3     n1   n2   78.4 MBytes 21.8 Mbits/sec 5.340 ms   1733512/1894138 (92%)   
+3     n2   n1   78.4 MBytes 21.7 Mbits/sec 4.824 ms   1646489/1807124 (91%)   

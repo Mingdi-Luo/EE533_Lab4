@@ -1,0 +1,15 @@
+--- Step 5 TCP NIC Baseline (Sat Feb  7 06:35:19 PM PST 2026) ---
+SRC  DST  Transfer     Bandwidth   
+----------------------------------------
+n0   n1   45.8 MBytes  74.7 Mbits/sec
+n0   n2   51.9 MBytes  86.7 Mbits/sec
+n0   n3   62.8 MBytes  104 Mbits/sec
+n1   n0   49.4 MBytes  81.9 Mbits/sec
+n1   n2   48.5 MBytes  79.5 Mbits/sec
+n1   n3   59.9 MBytes  100 Mbits/sec
+n2   n0   59.4 MBytes  99.4 Mbits/sec
+n2   n1   47.2 MBytes  76.7 Mbits/sec
+n2   n3   58.6 MBytes  97.0 Mbits/sec
+n3   n0   59.9 MBytes  100 Mbits/sec
+n3   n1   46.1 MBytes  76.7 Mbits/sec
+n3   n2   53.9 MBytes  89.8 Mbits/sec

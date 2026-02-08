@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nf:module xmlns:nf="http://www.NetFPGA.org/NF2_register_system" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.NetFPGA.org/NF2_register_system NF2_register_system.xsd ">
+	<nf:name>ids</nf:name>
+	<nf:prefix>ids</nf:prefix>
+	<nf:location>udp</nf:location>
+	<nf:description>Registers for IDS</nf:description>
+	<nf:blocksize>64</nf:blocksize>
+  <nf:registers>
+
+    <!-- SOFTWARE REGISTERS -->
+    <nf:register>
+        <nf:name>la_in_read_ptr</nf:name>
+        <nf:description>Read pointer for the In-FIFO capture memory</nf:description>
+        <nf:type>generic_software32</nf:type>
+    </nf:register>
+
+    <nf:register>
+        <nf:name>la_out_read_ptr</nf:name>
+        <nf:description>Read pointer for the Out-FIFO capture memory</nf:description>
+        <nf:type>generic_software32</nf:type>
+    </nf:register>
+
+    <nf:register>
+        <nf:name>ids_cmd</nf:name>
+        <nf:description>Command Register</nf:description>
+        <nf:type>generic_software32</nf:type>
+    </nf:register>
+
+    <nf:register>
+        <nf:name>pattern_low</nf:name>
+        <nf:description>Lower 32 bits of the pattern</nf:description>
+        <nf:type>generic_software32</nf:type>
+    </nf:register>
+
+    <nf:register>
+        <nf:name>pattern_high</nf:name>
+        <nf:description>Upper 32 bits of the pattern</nf:description>
+        <nf:type>generic_software32</nf:type>
+    </nf:register>
+
+
+    <!-- HARDWARE REGISTERS -->
+    <nf:register>
+        <nf:name>la_in_word_out_0</nf:name>
+        <nf:description>In-FIFO captured data [31:0]</nf:description>
+        <nf:type>generic_hardware32</nf:type>
+    </nf:register>
+
+    <nf:register>
+        <nf:name>la_in_word_out_1</nf:name>
+        <nf:description>In-FIFO captured data [63:32]</nf:description>
+        <nf:type>generic_hardware32</nf:type>
+    </nf:register>
+
+    <nf:register>
+        <nf:name>la_in_word_out_2</nf:name>
+        <nf:description>In-FIFO captured data [71:64]</nf:description>
+        <nf:type>generic_hardware32</nf:type>
+    </nf:register>
+
+    <nf:register>
+        <nf:name>la_out_word_out_0</nf:name>
+        <nf:description>Out-FIFO captured data [31:0]</nf:description>
+        <nf:type>generic_hardware32</nf:type>
+    </nf:register>
+
+    <nf:register>
+        <nf:name>la_out_word_out_1</nf:name>
+        <nf:description>Out-FIFO captured data [63:32]</nf:description>
+        <nf:type>generic_hardware32</nf:type>
+    </nf:register>
+
+    <nf:register>
+        <nf:name>la_out_word_out_2</nf:name>
+        <nf:description>Out-FIFO captured data [71:64]</nf:description>
+        <nf:type>generic_hardware32</nf:type>
+    </nf:register>
+
+    <nf:register>
+        <nf:name>matches</nf:name>
+        <nf:description>Match Count Register</nf:description>
+        <nf:type>generic_hardware32</nf:type>
+    </nf:register>
+
+  </nf:registers>
+</nf:module>
+

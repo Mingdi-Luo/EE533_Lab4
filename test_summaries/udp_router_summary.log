@@ -1,0 +1,15 @@
+--- Step 6 UDP Router-mode Stress Test (Sat Feb  7 06:42:53 PM PST 2026) ---
+Round SRC  DST  Transfer   Bandwidth    Jitter     Loss         Loss%%  
+----------------------------------------------------------------------------
+1     n0   n1   212 MBytes 59.2 Mbits/sec 0.009 ms   1380384/1814424 (76%)   
+1     n1   n0   138 MBytes 38.6 Mbits/sec 0.582 ms   1612415/1895771 (85%)   
+1     n2   n3   145 MBytes 40.2 Mbits/sec 9.851 ms   1507202/1803736 (84%)   
+1     n3   n2   155 MBytes 43.3 Mbits/sec 0.719 ms   1452196/1770131 (82%)   
+2     n0   n2   252 MBytes 70.3 Mbits/sec 0.622 ms   1299882/1816199 (72%)   
+2     n2   n0   196 MBytes 54.9 Mbits/sec 0.547 ms   1418071/1820387 (78%)   
+2     n1   n3   195 MBytes 54.5 Mbits/sec 0.664 ms   1494191/1893677 (79%)   
+2     n3   n1   274 MBytes 76.1 Mbits/sec 11.523 ms  1256548/1818529 (69%)   
+3     n0   n3   121 MBytes 33.6 Mbits/sec 10.857 ms  1557268/1804332 (86%)   
+3     n3   n0   194 MBytes 53.9 Mbits/sec 0.760 ms   1418087/1814802 (78%)   
+3     n1   n2   191 MBytes 53.3 Mbits/sec 0.211 ms   1506833/1897188 (79%)   
+3     n2   n1   246 MBytes 68.6 Mbits/sec 0.025 ms   1300414/1804397 (72%)   
