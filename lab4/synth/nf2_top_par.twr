@@ -70,7 +70,7 @@ Timing constraint: TS_rx_clk = PERIOD TIMEGRP "rx_clock" 8 ns HIGH 50%;
 
  64432 paths analyzed, 2096 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors)
- Minimum period is   7.883ns.
+ Minimum period is   7.984ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -85,18 +85,18 @@ Timing constraint: TS_tx_clk_gmii = PERIOD TIMEGRP "tx_clock_gmii" 8 ns HIGH
 ================================================================================
 Timing constraint: TS_cpci_clk = PERIOD TIMEGRP "cpci_clk" 16 ns HIGH 50%;
 
- 7770 paths analyzed, 785 endpoints analyzed, 0 failing endpoints
+ 7680 paths analyzed, 785 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors)
- Minimum period is  11.483ns.
+ Minimum period is  11.255ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
 Timing constraint: TS_core_clk_int = PERIOD TIMEGRP "core_clk_int" 8 ns HIGH 
 50%;
 
- 1375648 paths analyzed, 65480 endpoints analyzed, 0 failing endpoints
+ 1323811 paths analyzed, 35226 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors)
- Minimum period is   7.985ns.
+ Minimum period is   7.994ns.
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -825,8 +825,8 @@ Clock to Setup on destination clock core_clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-core_clk       |    7.985|         |         |         |
-cpci_clk       |    7.985|         |         |         |
+core_clk       |    7.994|         |         |         |
+cpci_clk       |    7.994|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock cpci_clk
@@ -834,8 +834,8 @@ Clock to Setup on destination clock cpci_clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-core_clk       |    7.985|         |         |         |
-cpci_clk       |   11.483|         |         |         |
+core_clk       |    7.994|         |         |         |
+cpci_clk       |   11.255|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock gtx_clk
@@ -859,7 +859,7 @@ Clock to Setup on destination clock rgmii_1_rxc
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-rgmii_1_rxc    |    7.488|    1.699|         |    1.884|
+rgmii_1_rxc    |    7.912|    1.699|         |    1.884|
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock rgmii_2_rxc
@@ -867,7 +867,7 @@ Clock to Setup on destination clock rgmii_2_rxc
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-rgmii_2_rxc    |    7.795|    1.482|         |    1.991|
+rgmii_2_rxc    |    7.984|    1.482|         |    1.991|
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock rgmii_3_rxc
@@ -875,7 +875,7 @@ Clock to Setup on destination clock rgmii_3_rxc
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-rgmii_3_rxc    |    7.883|    1.523|         |    1.666|
+rgmii_3_rxc    |    7.855|    1.328|         |    1.666|
 ---------------+---------+---------+---------+---------+
 
 TIMEGRP "CPCI_DATA" OFFSET = OUT 10 ns AFTER COMP "cpci_clk";
@@ -1130,24 +1130,24 @@ Timing summary:
 
 Timing errors: 0  Score: 0
 
-Constraints cover 1490613 paths, 4 nets, and 165712 connections
+Constraints cover 1438686 paths, 4 nets, and 119676 connections
 
 Design statistics:
-   Minimum period:  11.483ns   (Maximum frequency:  87.085MHz)
+   Minimum period:  11.255ns   (Maximum frequency:  88.849MHz)
    Maximum path delay from/to any node:   1.699ns
    Maximum net delay:   0.603ns
    Minimum input required time before clock:   2.865ns
    Minimum output required time after clock:   4.689ns
 
 
-Analysis completed Sat Feb  7 21:16:08 2026 
+Analysis completed Thu Feb  5 20:29:11 2026 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 1277 MB
+Peak Memory Usage: 1052 MB
 
 
 

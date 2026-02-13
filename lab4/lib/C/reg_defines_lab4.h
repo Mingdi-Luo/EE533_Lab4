@@ -1,8 +1,8 @@
 /********************************************************
  *
  * C register defines file
- * Project: IDS (lab4)
- * Description: IDS Router
+ * Project: Reference router (lab4)
+ * Description: Reference IPv4 router with Mini IDS
  *
  ********************************************************/
 
@@ -11,13 +11,13 @@
 
 /* ========= Version Information ========= */
 
-#define DEVICE_ID          102
-#define DEVICE_MAJOR       0
-#define DEVICE_MINOR       1
+#define DEVICE_ID          2
+#define DEVICE_MAJOR       1
+#define DEVICE_MINOR       0
 #define DEVICE_REVISION    0
 #define DEVICE_PROJ_DIR    "lab4"
-#define DEVICE_PROJ_NAME   "IDS"
-#define DEVICE_PROJ_DESC   "IDS Router"
+#define DEVICE_PROJ_NAME   "Reference router"
+#define DEVICE_PROJ_DESC   "Reference IPv4 router with Mini IDS"
 
 
 /* ========= Constants ========= */
@@ -688,18 +688,10 @@
 // Name: ids (IDS)
 // Description: Registers for IDS
 // File: projects/lab4/include/ids.xml
-#define IDS_LA_IN_READ_PTR_REG      0x2000300
-#define IDS_LA_OUT_READ_PTR_REG     0x2000304
-#define IDS_IDS_CMD_REG             0x2000308
-#define IDS_PATTERN_LOW_REG         0x200030c
-#define IDS_PATTERN_HIGH_REG        0x2000310
-#define IDS_LA_IN_WORD_OUT_0_REG    0x2000314
-#define IDS_LA_IN_WORD_OUT_1_REG    0x2000318
-#define IDS_LA_IN_WORD_OUT_2_REG    0x200031c
-#define IDS_LA_OUT_WORD_OUT_0_REG   0x2000320
-#define IDS_LA_OUT_WORD_OUT_1_REG   0x2000324
-#define IDS_LA_OUT_WORD_OUT_2_REG   0x2000328
-#define IDS_MATCHES_REG             0x200032c
+#define IDS_PATTERN_HIGH_REG   0x2000300
+#define IDS_PATTERN_LOW_REG    0x2000304
+#define IDS_IDS_CMD_REG        0x2000308
+#define IDS_MATCHES_REG        0x200030c
 
 // Name: output_queues (OQ)
 // Description: SRAM-based output queue using round-robin removal

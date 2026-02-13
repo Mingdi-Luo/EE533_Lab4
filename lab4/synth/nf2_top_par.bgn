@@ -4,7 +4,7 @@ Loading device for application Rf_Device from file '2vp50.nph' in environment
 /opt/Xilinx/10.1/ISE.
    "nf2_top" is an NCD, version 3.2, device xc2vp50, package ff1152, speed -7
 
-Sat Feb  7 21:16:14 2026
+Thu Feb  5 20:29:17 2026
 
 /opt/Xilinx/10.1/ISE/bin/lin64/unwrapped/bitgen -intstyle ise -g Binary:No -w nf2_top_par.ncd 
 

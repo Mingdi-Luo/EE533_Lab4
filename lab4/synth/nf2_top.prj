@@ -73,7 +73,6 @@ verilog work /root/netfpga/lib/verilog/core/user_data_path/udp_reg_master/src/ud
 verilog work /root/netfpga/lib/verilog/core/io_queues/add_rm_hdr/src/add_hdr.v
 verilog work /root/netfpga/lib/verilog/core/io_queues/add_rm_hdr/src/add_rm_hdr.v
 verilog work /root/netfpga/lib/verilog/core/io_queues/add_rm_hdr/src/rm_hdr.v
-verilog work /root/netfpga/lib/verilog/core/strip_headers/keep_length/src/strip_headers.v
 verilog work /root/netfpga/lib/verilog/core/utils/src/fallthrough_small_fifo_v2.v
 verilog work /root/netfpga/lib/verilog/core/utils/src/small_fifo_v2.v
 verilog work /root/netfpga/lib/verilog/core/utils/src/rotate.v
@@ -94,6 +93,7 @@ verilog work /root/netfpga/lib/verilog/core/utils/generic_regs/src/generic_sw_re
 verilog work /root/netfpga/lib/verilog/core/utils/generic_regs/src/generic_table_regs.v
 verilog work /root/netfpga/lib/verilog/core/utils/generic_regs/src/generic_hw_regs.v
 verilog work /root/netfpga/lib/verilog/core/utils/generic_regs/src/generic_cntr_regs.v
+verilog work /root/netfpga/lib/verilog/core/strip_headers/keep_length/src/strip_headers.v
 verilog work /root/netfpga/lib/verilog/core/io_queues/cpu_dma_queue/src/src_coregen/cdq_rx_fifo_512x36_to_72.v
 verilog work /root/netfpga/lib/verilog/core/io_queues/cpu_dma_queue/src/src_coregen/cdq_rx_fifo_512x36.v
 verilog work /root/netfpga/lib/verilog/core/io_queues/cpu_dma_queue/src/src_coregen/cdq_tx_fifo_512x36.v

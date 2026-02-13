@@ -3,8 +3,8 @@
 #
 # Python register defines
 #
-# Project: IDS (lab4)
-# Description: IDS Router
+# Project: Reference router (lab4)
+# Description: Reference IPv4 router with Mini IDS
 #
 #############################################################
 
@@ -12,13 +12,13 @@
 #   Version Information
 # -------------------------------------
 def DEVICE_ID ():
-    return 102
+    return 2
 
 def DEVICE_MAJOR ():
-    return 0
+    return 1
 
 def DEVICE_MINOR ():
-    return 1
+    return 0
 
 def DEVICE_REVISION ():
     return 0
@@ -27,10 +27,10 @@ def DEVICE_PROJ_DIR ():
     return "lab4"
 
 def DEVICE_PROJ_NAME ():
-    return "IDS"
+    return "Reference router"
 
 def DEVICE_PROJ_DESC ():
-    return "IDS Router"
+    return "Reference IPv4 router with Mini IDS"
 
 
 # -------------------------------------
@@ -1546,41 +1546,17 @@ def IN_ARB_STATE_REG ():
 # Name: ids (IDS)
 # Description: Registers for IDS
 # File: projects/lab4/include/ids.xml
-def IDS_LA_IN_READ_PTR_REG ():    
+def IDS_PATTERN_HIGH_REG (): 
     return 0x2000300
 
-def IDS_LA_OUT_READ_PTR_REG ():   
+def IDS_PATTERN_LOW_REG ():  
     return 0x2000304
 
-def IDS_IDS_CMD_REG ():           
+def IDS_IDS_CMD_REG ():      
     return 0x2000308
 
-def IDS_PATTERN_LOW_REG ():       
+def IDS_MATCHES_REG ():      
     return 0x200030c
-
-def IDS_PATTERN_HIGH_REG ():      
-    return 0x2000310
-
-def IDS_LA_IN_WORD_OUT_0_REG ():  
-    return 0x2000314
-
-def IDS_LA_IN_WORD_OUT_1_REG ():  
-    return 0x2000318
-
-def IDS_LA_IN_WORD_OUT_2_REG ():  
-    return 0x200031c
-
-def IDS_LA_OUT_WORD_OUT_0_REG (): 
-    return 0x2000320
-
-def IDS_LA_OUT_WORD_OUT_1_REG (): 
-    return 0x2000324
-
-def IDS_LA_OUT_WORD_OUT_2_REG (): 
-    return 0x2000328
-
-def IDS_MATCHES_REG ():           
-    return 0x200032c
 
 
 # Name: output_queues (OQ)
@@ -2675,18 +2651,10 @@ __main__.nf_regmap.update({
     0x2000218 : "IN_ARB_LAST_PKT_CTRL_1_REG",
     0x200021c : "IN_ARB_STATE_REG",
 
-    0x2000300 : "IDS_LA_IN_READ_PTR_REG",
-    0x2000304 : "IDS_LA_OUT_READ_PTR_REG",
+    0x2000300 : "IDS_PATTERN_HIGH_REG",
+    0x2000304 : "IDS_PATTERN_LOW_REG",
     0x2000308 : "IDS_IDS_CMD_REG",
-    0x200030c : "IDS_PATTERN_LOW_REG",
-    0x2000310 : "IDS_PATTERN_HIGH_REG",
-    0x2000314 : "IDS_LA_IN_WORD_OUT_0_REG",
-    0x2000318 : "IDS_LA_IN_WORD_OUT_1_REG",
-    0x200031c : "IDS_LA_IN_WORD_OUT_2_REG",
-    0x2000320 : "IDS_LA_OUT_WORD_OUT_0_REG",
-    0x2000324 : "IDS_LA_OUT_WORD_OUT_1_REG",
-    0x2000328 : "IDS_LA_OUT_WORD_OUT_2_REG",
-    0x200032c : "IDS_MATCHES_REG",
+    0x200030c : "IDS_MATCHES_REG",
 
     0x2001000 : "OQ_QUEUE_0_CTRL_REG",
     0x2001004 : "OQ_QUEUE_0_NUM_PKT_BYTES_STORED_REG",

@@ -7,11 +7,11 @@
 // \   \   \/     Version : 10.1
 //  \   \         Application : sch2verilog
 //  /   /         Filename : wordmatch.vf
-// /___/   /\     Timestamp : 01/29/2025 01:28:32
+// /___/   /\     Timestamp : 01/30/2026 21:37:37
 // \   \  /  \ 
 //  \___\/\___\ 
 //
-//Command: C:\Xilinx\10.1\ISE\bin\nt\unwrapped\sch2verilog.exe -intstyle ise -family virtex2p -w "C:/Documents and Settings/student/lab3_v3/wordmatch.sch" wordmatch.vf
+//Command: C:\Xilinx\10.1\ISE\bin\nt\unwrapped\sch2verilog.exe -intstyle ise -family virtex2p -w "C:/Documents and Settings/student/Desktop/ids/wordmatch.sch" wordmatch.vf
 //Design Name: wordmatch
 //Device: virtex2p
 //Purpose:
@@ -90,55 +90,55 @@ module wordmatch(datacomp,
     input [6:0] wildcard;
    output match;
    
-   wire XLXN_1;
-   wire XLXN_2;
-   wire XLXN_3;
-   wire XLXN_4;
-   wire XLXN_5;
-   wire XLXN_6;
-   wire XLXN_7;
-   wire XLXN_8;
+   wire XLXN_29;
+   wire XLXN_30;
+   wire XLXN_31;
+   wire XLXN_32;
+   wire XLXN_33;
+   wire XLXN_34;
+   wire XLXN_35;
+   wire XLXN_46;
    
-   OR8_MXILINX_wordmatch XLXI_1 (.I0(XLXN_8), 
-                                 .I1(XLXN_7), 
-                                 .I2(XLXN_6), 
-                                 .I3(XLXN_5), 
-                                 .I4(XLXN_4), 
-                                 .I5(XLXN_3), 
-                                 .I6(XLXN_2), 
-                                 .I7(XLXN_1), 
-                                 .O(match));
-   // synthesis attribute HU_SET of XLXI_1 is "XLXI_1_0"
-   comparator XLXI_2 (.a(datacomp[55:0]), 
+   comparator XLXI_1 (.a(datacomp[55:0]), 
                       .amask(wildcard[6:0]), 
                       .b(datain[55:0]), 
-                      .match(XLXN_1));
-   comparator XLXI_3 (.a(datacomp[55:0]), 
+                      .match(XLXN_46));
+   comparator XLXI_2 (.a(datacomp[55:0]), 
                       .amask(wildcard[6:0]), 
                       .b(datain[63:8]), 
-                      .match(XLXN_2));
-   comparator XLXI_4 (.a(datacomp[55:0]), 
+                      .match(XLXN_29));
+   comparator XLXI_3 (.a(datacomp[55:0]), 
                       .amask(wildcard[6:0]), 
                       .b(datain[71:16]), 
-                      .match(XLXN_3));
-   comparator XLXI_6 (.a(datacomp[55:0]), 
+                      .match(XLXN_30));
+   comparator XLXI_4 (.a(datacomp[55:0]), 
+                      .amask(wildcard[6:0]), 
+                      .b(datain[79:24]), 
+                      .match(XLXN_31));
+   comparator XLXI_5 (.a(datacomp[55:0]), 
                       .amask(wildcard[6:0]), 
                       .b(datain[87:32]), 
-                      .match(XLXN_5));
-   comparator XLXI_7 (.a(datacomp[55:0]), 
+                      .match(XLXN_32));
+   comparator XLXI_6 (.a(datacomp[55:0]), 
                       .amask(wildcard[6:0]), 
                       .b(datain[95:40]), 
-                      .match(XLXN_6));
-   comparator XLXI_8 (.a(datacomp[55:0]), 
+                      .match(XLXN_33));
+   comparator XLXI_7 (.a(datacomp[55:0]), 
                       .amask(wildcard[6:0]), 
                       .b(datain[103:48]), 
-                      .match(XLXN_7));
-   comparator XLXI_9 (.a(datacomp[55:0]), 
+                      .match(XLXN_34));
+   comparator XLXI_8 (.a(datacomp[55:0]), 
                       .amask(wildcard[6:0]), 
                       .b(datain[111:56]), 
-                      .match(XLXN_8));
-   comparator XLXI_27 (.a(datacomp[55:0]), 
-                       .amask(wildcard[6:0]), 
-                       .b(datain[79:24]), 
-                       .match(XLXN_4));
+                      .match(XLXN_35));
+   OR8_MXILINX_wordmatch XLXI_9 (.I0(XLXN_35), 
+                                 .I1(XLXN_34), 
+                                 .I2(XLXN_33), 
+                                 .I3(XLXN_32), 
+                                 .I4(XLXN_31), 
+                                 .I5(XLXN_30), 
+                                 .I6(XLXN_29), 
+                                 .I7(XLXN_46), 
+                                 .O(match));
+   // synthesis attribute HU_SET of XLXI_9 is "XLXI_9_0"
 endmodule

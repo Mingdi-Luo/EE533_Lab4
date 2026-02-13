@@ -2,8 +2,8 @@
 #
 # Perl register defines
 #
-# Project: IDS (lab4)
-# Description: IDS Router
+# Project: Reference router (lab4)
+# Description: Reference IPv4 router with Mini IDS
 #
 #############################################################
 
@@ -472,17 +472,9 @@ use Exporter;
                 IN_ARB_LAST_PKT_WORD_1_LO_REG
                 IN_ARB_LAST_PKT_CTRL_1_REG
                 IN_ARB_STATE_REG
-                IDS_LA_IN_READ_PTR_REG
-                IDS_LA_OUT_READ_PTR_REG
-                IDS_IDS_CMD_REG
-                IDS_PATTERN_LOW_REG
                 IDS_PATTERN_HIGH_REG
-                IDS_LA_IN_WORD_OUT_0_REG
-                IDS_LA_IN_WORD_OUT_1_REG
-                IDS_LA_IN_WORD_OUT_2_REG
-                IDS_LA_OUT_WORD_OUT_0_REG
-                IDS_LA_OUT_WORD_OUT_1_REG
-                IDS_LA_OUT_WORD_OUT_2_REG
+                IDS_PATTERN_LOW_REG
+                IDS_IDS_CMD_REG
                 IDS_MATCHES_REG
                 OQ_QUEUE_0_CTRL_REG
                 OQ_QUEUE_0_NUM_PKT_BYTES_STORED_REG
@@ -708,13 +700,13 @@ use Exporter;
 # -------------------------------------
 #   Version Information
 # -------------------------------------
-sub DEVICE_ID ()        { 102; }
-sub DEVICE_MAJOR ()     { 0; }
-sub DEVICE_MINOR ()     { 1; }
+sub DEVICE_ID ()        { 2; }
+sub DEVICE_MAJOR ()     { 1; }
+sub DEVICE_MINOR ()     { 0; }
 sub DEVICE_REVISION ()  { 0; }
 sub DEVICE_PROJ_DIR ()  { "lab4"; }
-sub DEVICE_PROJ_NAME () { "IDS"; }
-sub DEVICE_PROJ_DESC () { "IDS Router"; }
+sub DEVICE_PROJ_NAME () { "Reference router"; }
+sub DEVICE_PROJ_DESC () { "Reference IPv4 router with Mini IDS"; }
 
 
 # -------------------------------------
@@ -1386,18 +1378,10 @@ sub IN_ARB_STATE_REG ()                { 0x200021c;}
 # Name: ids (IDS)
 # Description: Registers for IDS
 # File: projects/lab4/include/ids.xml
-sub IDS_LA_IN_READ_PTR_REG ()      { 0x2000300;}
-sub IDS_LA_OUT_READ_PTR_REG ()     { 0x2000304;}
-sub IDS_IDS_CMD_REG ()             { 0x2000308;}
-sub IDS_PATTERN_LOW_REG ()         { 0x200030c;}
-sub IDS_PATTERN_HIGH_REG ()        { 0x2000310;}
-sub IDS_LA_IN_WORD_OUT_0_REG ()    { 0x2000314;}
-sub IDS_LA_IN_WORD_OUT_1_REG ()    { 0x2000318;}
-sub IDS_LA_IN_WORD_OUT_2_REG ()    { 0x200031c;}
-sub IDS_LA_OUT_WORD_OUT_0_REG ()   { 0x2000320;}
-sub IDS_LA_OUT_WORD_OUT_1_REG ()   { 0x2000324;}
-sub IDS_LA_OUT_WORD_OUT_2_REG ()   { 0x2000328;}
-sub IDS_MATCHES_REG ()             { 0x200032c;}
+sub IDS_PATTERN_HIGH_REG ()   { 0x2000300;}
+sub IDS_PATTERN_LOW_REG ()    { 0x2000304;}
+sub IDS_IDS_CMD_REG ()        { 0x2000308;}
+sub IDS_MATCHES_REG ()        { 0x200030c;}
 
 # Name: output_queues (OQ)
 # Description: SRAM-based output queue using round-robin removal
