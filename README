@@ -1,1 +1,7 @@
-readme
+We would like to clarify an issue regarding the upload history of our project repository.
+In our submission records, there are timeout upload logs. This occurred because after programming the bitfile onto the NetFPGA board, we were unable to ping between 2 nodes. 
+To diagnose the issue, we sought guidance from senior students who had previously taken the course. After reviewing our code, they confirmed that there were no obvious logical errors. 
+To further isolate the problem and rule out potential hardware issues, they attempted to run their own project files on the board.
+However, during the subsequent GitHub upload process, both project folders had identical names. As a result, we mistakenly uploaded their project files instead of our own.
+While reviewing our Lab4 implementation during Lab5, we discovered this mistake and immediately re-uploaded our correct project files.
+We sincerely apologize for any confusion or inconvenience this may have caused and respectfully ask for your understanding. Thank you.
